@@ -1,28 +1,17 @@
 let items = [];
 
-const itemDiv = document.getElementById("items")
-const itemInput = document.getElementById("itemInput")
-const buttItem = document.getElementById("buttItem")
-const inputT = document.querySelector('input[type="text"]');
+const storageKey = "items";
 
-const storageKey = "items"
-
-function getContainer(){
-    return document.getElementById('contentContainer')
-}
-
-function getInputRow(){
-    const container = getContainer();
-    return Array.from(container.querySelectorAll('.inputRow'));
+function getContainer() {
+    return document.getElementById("contentContainer");
 }
 
 function renderItems() {
     const container = getContainer();
- 
+
     // Remove all task rows
     container.querySelectorAll('.taskRow').forEach(el => el.remove());
- 
-    // Build one grid row per item (3 cells each)
+
     items.forEach((item, index) => {
         // Column 1: Checkbox
         const checkCell = document.createElement("div");
@@ -32,23 +21,29 @@ function renderItems() {
         const checkbox = document.createElement("input");
         checkbox.type = "checkbox";
         checkbox.classList.add("checkB");
+        checkbox.checked = item.checked; // restore saved state
         label.appendChild(checkbox);
         checkCell.appendChild(label);
-        
- 
+
         // Column 2: Text
         const textCell = document.createElement("div");
         textCell.classList.add("cell", "taskRow", "taskText");
         const text = document.createElement("p");
-        text.textContent = item;
+        text.textContent = item.text;
+        if (item.checked) {
+            text.style.textDecoration = 'line-through';
+            text.style.opacity = '0.5';
+        }
         textCell.appendChild(text);
- 
-        // Strike through text when checkbox is ticked
+
+        // Save checked state and update strikethrough on change
         checkbox.addEventListener('change', function() {
+            items[index].checked = this.checked;
             text.style.textDecoration = this.checked ? 'line-through' : 'none';
             text.style.opacity = this.checked ? '0.5' : '1';
+            saveItems();
         });
- 
+
         // Column 3: Delete button
         const btnCell = document.createElement("div");
         btnCell.classList.add("cell", "taskRow", "btnCell");
@@ -63,14 +58,10 @@ function renderItems() {
     });
 }
 
-
-
-
-//local storage method
-function loadItems(){
-    const oldItems = localStorage.getItem(storageKey)
-    if(oldItems) items = JSON.parse(oldItems)
-    renderItems()
+function loadItems() {
+    const oldItems = localStorage.getItem(storageKey);
+    if (oldItems) items = JSON.parse(oldItems);
+    renderItems();
 }
 
 function saveItems() {
@@ -81,18 +72,18 @@ function addItem() {
     const input = document.getElementById("itemInput");
     const value = input.value.trim();
     if (!value) return;
-    items.push(value);
+    items.push({ text: value, checked: false }); // store as object
     renderItems();
-    document.getElementById("itemInput").value = "";
+    input.value = "";
     saveItems();
 }
- 
+
 function removeItem(index) {
     items.splice(index, 1);
     renderItems();
     saveItems();
 }
- 
+
 document.addEventListener("DOMContentLoaded", () => {
     const input = document.getElementById("itemInput");
     input.addEventListener('keydown', function(event) {
@@ -100,4 +91,3 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     loadItems();
 });
-
