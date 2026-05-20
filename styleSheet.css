@@ -175,6 +175,46 @@ h1 {
     cursor: pointer;
     opacity:50%;
 }
+
+/* Drag handle cursor on checkbox cell */
+.dragHandle {
+    cursor: grab;
+    border-right: dotted;
+    border-width:5px;
+    border-color:#9f6dc5;
+}
+.dragHandle:active {
+    cursor: grabbing;
+    background-color:#9f6dc5;
+}
+ 
+/* Row being dragged — fade it out */
+.dragging {
+    opacity: 0.3;
+}
+ 
+/* Row being hovered over as a drop target */
+.dragOver {
+    background-color:#9f6dc5;
+    border-radius: 6px;
+}
+ 
+/* Inline edit input */
+.inlineEdit {
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #7f4bad;
+    padding: 4px 6px;
+    border: solid;
+    border-color: #c892f7;
+    border-radius: 5px;
+    border-width: 2px;
+    color: #e0c1fb;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 16px;
+    outline: none;
+}
+
  
 /* Delete button */
 button {
@@ -200,5 +240,7 @@ body {
     height: auto;
     background: #c892f7;
 }
+
+
 
  
