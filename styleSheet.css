@@ -1,0 +1,204 @@
+
+
+.container {
+    cursor: pointer;
+    display: grid;
+    grid-template-rows: auto auto auto;
+ 
+    font-family: 'Courier New', Courier, monospace;
+    color: #723ea0;
+ 
+    width: inherit;
+    margin: 25px;
+ 
+    background-color:#c892f7;
+    border: solid;
+    border-color:#723ea0;
+    border-radius: 15px;
+    border-width: 6px;
+}
+ 
+.header {
+    width: inherit;
+
+    border: solid;
+    border-color:#723ea0;
+    border-radius: 15px;
+    border-width: 4px;
+    background-color: #c892f7;
+    
+    text-indent: 15px;
+    height: fit-content;
+    margin: 30px 30px 15px 30px;
+}
+ 
+h1 {
+    text-align: center;
+    color:#723ea0;
+    font-size: 65px;
+}
+ 
+.subHead {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: inherit;
+    
+    border: solid;
+    border-radius: 15px;
+    border-width: 4px;
+    background-color:#723ea0;
+    height: fit-content;
+    margin: 15px 30px 15px 30px;
+    padding: 0 15px;
+    box-sizing: border-box;
+}
+ 
+.subHead h2 {
+    margin: 0;
+    color:#e0c1fb;
+    white-space: nowrap;
+    border-color:#723ea0;
+    border-radius: 15px;
+    border-width: 6px;
+}
+ 
+.subHead input[type="text"] {
+    flex: 1;
+    padding: 6px 8px;
+    
+    background-color:#723ea0;
+    border: solid;
+    border-radius: 5px;
+    border-width: 3px;
+
+    color: #e0c1fb;
+    font-family: 'Courier New', Courier, monospace;
+    font-size:25px;
+    
+    border-color:#723ea0;
+    
+}
+ 
+.subHead input[type="text"]::placeholder {
+    background-color: #723ea0;
+}
+ 
+.subHead input[type="text"]:focus {
+    outline: none;
+    background-color: #723ea0;
+}
+
+/* ── 3-column grid ── */
+.contentContainer {
+    display: grid;
+    grid-template-columns: 50px 1fr 60px; /* col1: checkbox | col2: text | col3: delete */
+    align-items: center;
+    gap: 6px 8px;
+ 
+    background-color:#c892f7;
+    border: solid;
+    border-color: #723ea0;
+    border-radius: 15px;
+    border-width: 4px;
+    margin: 15px 30px 30px 30px;
+    padding: 10px;
+    color:#723ea0;
+    
+}
+ 
+/* Generic cell */
+.cell {
+    display: flex;
+    align-items: center;
+    padding: 4px 6px;
+    min-height: 36px;
+}
+ 
+.empty {
+    /* placeholder cells — intentionally blank */
+}
+ 
+/* Task row cells */
+.taskText p {
+    margin: 0 0 0 15px;
+    word-break: break-word;
+    font-size:20px;
+    font-weight: bold;
+    color:#5e2f82;
+}
+
+.btnCell {
+    justify-content: center;
+}
+ 
+/* Input row */
+.inputCell {
+    justify-content: stretch;
+    background-color: #723ea0;
+}
+ 
+.inputCell input[type="text"] {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 6px 8px;
+    border: solid;
+    border-color: #9b6bbf;
+    border-radius: 5px;
+    border-width: 3px;
+    color: #e0c1fb;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 20px;
+    background-color: #723ea0;
+}
+ 
+.inputCell input[type="text"]::placeholder {
+    color: #bf9fda;
+}
+ 
+.inputCell input[type="text"]:focus {
+    outline: none;
+}
+ 
+/* Checkbox */
+.checkLabel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+ 
+.checkB {
+    width: 18px;
+    height: 18px;
+    accent-color: #c892f7;
+    cursor: pointer;
+    opacity:50%;
+}
+ 
+/* Delete button */
+button {
+    background-color: #7f4bad;
+    color: #c892f7;
+    padding: 4px 9px;
+    border: solid;
+    border-color: #723ea0;
+    border-radius: 8px;
+    border-width: 3px;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    font-size: 14px;
+}
+ 
+button:hover {
+    background-color:#9b6bbf;
+    border-color:#9f6dc5;
+    color: #fff;
+}
+ 
+body {
+    height: auto;
+    background: #c892f7;
+}
+
+ 
